@@ -1,11 +1,16 @@
 from django.shortcuts import render
+from django.views.generic import DetailView, CreateView
+
+from catalog.admin import ProductAdmin
+from catalog.models import Product
 
 
 # Create your views here.
 
 
 def index(request):
-    return render(request, "catalog/home.html")
+    context = {'object_list': Product.objects.all()}
+    return render(request, "catalog/home.html", context)
 
 def contacts(request):
     if request.method == 'POST':
@@ -15,4 +20,15 @@ def contacts(request):
             'message': request.POST.get('message'),
         })
     return render(request, "catalog/contacts.html")
+
+# class ProductDetail(DetailView):
+#     model = Product
+#     template_name = 'catalog/product.html'
+#     context_object_name = 'product'
+
+
+def product_detail(request, pk):
+    template_name = 'catalog/product.html'
+    context = {'product': Product.objects.get(pk=pk)}
+    return render(request, template_name, context)
 

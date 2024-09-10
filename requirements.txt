@@ -1,7 +1,0 @@
-asgiref
-Django
-sqlparse
-psycopg2-binary
-pillow
-ipython
-

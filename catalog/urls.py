@@ -5,5 +5,5 @@ urlpatterns = [
     path('', index),
     path('contacts/', contacts),
     # path('product/<int:pk>', ProductDetail.as_view()),
-    path('product/<int:pk>', product_detail),
+    path('product/<int:pk>', product_detail, name='product_detail'),
 ]
